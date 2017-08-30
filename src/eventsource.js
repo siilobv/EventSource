@@ -618,22 +618,6 @@
     EventSourcePolyfill.prototype.withCredentials = undefined;
   }
 
-  var isEventSourceSupported = function () {
-    // Opera 12 fails this test, but this is fine.
-    return NativeEventSource != undefined && ("withCredentials" in NativeEventSource.prototype);
-  };
-
-  global.EventSourcePolyfill = EventSourcePolyfill;
-  global.NativeEventSource = NativeEventSource;
-
-  if (Transport != undefined && (NativeEventSource == undefined || (isCORSSupported && !isEventSourceSupported()))) {
-    // Why replace a native EventSource ?
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=444328
-    // https://bugzilla.mozilla.org/show_bug.cgi?id=831392
-    // https://code.google.com/p/chromium/issues/detail?id=260144
-    // https://code.google.com/p/chromium/issues/detail?id=225654
-    // ...
-    global.EventSource = EventSourcePolyfill;
-  }
+  return EventSourcePolyfill;
 
 }(typeof window !== 'undefined' ? window : this));
