@@ -622,4 +622,4 @@ const EventSourcePolyfill = (function (global) {
 
 }(typeof window !== 'undefined' ? window : this));
 
-module.exports = { 'default': EventSourcePolyfill };
+export { EventSourcePolyfill };

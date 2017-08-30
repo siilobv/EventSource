@@ -16,7 +16,12 @@
     "server sent events",
     "eventsource",
     "event-source",
-    "polyfill"
+    "polyfill",
+    "angular",
+    "angular2",
+    "angular 2",
+    "angular 4",
+    "webpack"
   ],
   "author": "Yaffle (https://github.com/Yaffle)",
   "license": "MIT",

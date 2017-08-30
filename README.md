@@ -1,6 +1,15 @@
 EventSource polyfill - http://www.w3.org/TR/eventsource/
 ========================================================
 
+This fork provide the following on top of the original:
+
+- The module returns the actual EventSource implementation, rather than sometimes polyfilling, sometimes not.
+- Typescript typings
+- Use SSE in your Angular project
+
+Forked from: https://github.com/Yaffle/EventSource
+with changes incorporated from: https://github.com/AlexGalays/EventSource and https://github.com/sguiheux/EventSource.
+
 Installing:
 -----------
 
@@ -16,6 +25,28 @@ bower install event-source-polyfill
 
 Just include `src/eventsource.js` or `src/eventsource.min.js` in your page to use the polyfill.
 
+How to use with angular:
+-------------------------
+
+
+
+TypeScript
+```typescript
+import {EventSourcePolyfill} from 'ng-event-source';
+
+let eventSource = new EventSourcePolyfill('http://my/url', {headers: { headerName: 'HeaderValue', header2: 'HeaderValue2' }});
+eventSource.onmessage = (data => {
+    this.zone.run(() => {
+        // Do stuff here
+    });
+});
+eventSource.onopen = (a) => {
+    // Do stuff here
+};
+eventSource.onerror = (e) => {
+    // Do stuff here
+}
+```
 
 Browser support:
 ----------------
