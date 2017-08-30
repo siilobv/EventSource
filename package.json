@@ -1,15 +1,12 @@
 {
-  "name": "event-source-polyfill",
-  "version": "0.0.9",
+  "name": "siilo-event-source",
+  "version": "2.0.0",
   "description": "A polyfill for http://www.w3.org/TR/eventsource/ ",
   "main": "src/eventsource.js",
   "typings": "src/typings.d.ts",
-  "scripts": {
-    "build": "grunt"
-  },
   "repository": {
     "type": "git",
-    "url": "git://github.com/Yaffle/EventSource.git"
+    "url": "git://github.com/siilobv/EventSource.git"
   },
   "keywords": [
     "sse",
@@ -23,15 +20,10 @@
     "angular 4",
     "webpack"
   ],
-  "author": "Yaffle (https://github.com/Yaffle)",
+  "author": "Jasper Aarts (Siilo B.V.)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Yaffle/EventSource/issues"
+    "url": "https://github.com/siilobv/EventSource/issues"
   },
-  "homepage": "https://github.com/Yaffle/EventSource",
-  "devDependencies": {
-    "grunt": "^0.4.4",
-    "grunt-cli": "^0.1.13",
-    "grunt-contrib-uglify": "~0.2.4"
-  }
+  "homepage": "https://github.com/siilobv/EventSource"
 }

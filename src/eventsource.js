@@ -14,7 +14,6 @@ const EventSourcePolyfill = (function (global) {
   var clearTimeout = global.clearTimeout;
   var XMLHttpRequest = global.XMLHttpRequest;
   var XDomainRequest = global.XDomainRequest;
-  var NativeEventSource = global.EventSource;
 
   var k = function () {
   };

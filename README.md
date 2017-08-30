@@ -13,21 +13,11 @@ with changes incorporated from: https://github.com/AlexGalays/EventSource and ht
 Installing:
 -----------
 
-You can get the code from npm or bower:
+Not published.
 
-```
-npm install event-source-polyfill
-```
-
-```
-bower install event-source-polyfill
-```
-
-Just include `src/eventsource.js` or `src/eventsource.min.js` in your page to use the polyfill.
 
 How to use with angular:
 -------------------------
-
 
 
 TypeScript
