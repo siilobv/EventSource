@@ -348,6 +348,7 @@ const EventSourcePolyfill = (function (global) {
     this.wasActivity = false;
     var CurrentTransport = options != undefined && options.Transport != undefined ? options.Transport : Transport;
     this.headers = options != undefined && options.headers != undefined ? JSON.parse(JSON.stringify(options.headers)) : undefined;
+    this.errorOnTimeout = options != undefined && options.errorOnTimeout != undefined && options.errorOnTimeout != null ? options.errorOnTimeout : true;
     var xhr = new CurrentTransport();
     this.transport = new XHRTransport(xhr);
     this.timeout = 0;
@@ -535,7 +536,7 @@ const EventSourcePolyfill = (function (global) {
     }
 
     if (this.currentState !== WAITING) {
-      if (!this.wasActivity) {
+      if (!this.wasActivity && this.errorOnTimeout) {
         throwError(new Error("No activity within " + this.heartbeatTimeout + " milliseconds. Reconnecting."));
         this.transport.cancel();
       } else {
