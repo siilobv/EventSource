@@ -348,6 +348,7 @@ const EventSourcePolyfill = (function (global) {
     var CurrentTransport = options != undefined && options.Transport != undefined ? options.Transport : Transport;
     this.headers = options != undefined && options.headers != undefined ? JSON.parse(JSON.stringify(options.headers)) : undefined;
     this.errorOnTimeout = options != undefined && options.errorOnTimeout != undefined && options.errorOnTimeout != null ? options.errorOnTimeout : true;
+    this.parameterCallback = options != undefined && typeof options.parameterCallback === "function" ? options.parameterCallback : undefined;
     var xhr = new CurrentTransport();
     this.transport = new XHRTransport(xhr);
     this.timeout = 0;
@@ -570,7 +571,18 @@ const EventSourcePolyfill = (function (global) {
     var url = this.url;
     if (this.url.slice(0, 5) !== "data:" &&
         this.url.slice(0, 5) !== "blob:") {
-      url = this.url + ((this.url.indexOf("?", 0) === -1 ? "?" : "&") + "lastEventId=" + encodeURIComponent(this.lastEventId) + "&r=" + (Math.random() + 1).toString().slice(2));
+        var parameters = this.parameterCallback && this.parameterCallback() || {};
+        if(parameters["lastEventId"] == undefined) {
+            parameters["lastEventId"] = this.lastEventId;
+        }
+        if(parameters["r"] == undefined) {
+            parameters["r"] = (Math.random() + 1).toString().slice(2);
+        }
+        for (var name in parameters) {
+          if (Object.prototype.hasOwnProperty.call(parameters, name)) {
+              url += (url.indexOf("?", 0) === -1 ? "?" : "&") + name + "=" + encodeURIComponent(parameters[name]);
+          }
+      }
     }
     var headers = {};
     headers["Accept"] = "text/event-stream";

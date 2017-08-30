@@ -18,6 +18,7 @@ interface EventSourceInit {
   withCredentials?: boolean;
   headers?: Object;
   errorOnTimeout?: boolean;
+  parameterCallback?: () => {[key:string]:string};
 }
 
 interface OnMessageEvent {

@@ -6,6 +6,7 @@ This fork provide the following on top of the original:
 - The module returns the actual EventSource implementation, rather than sometimes polyfilling, sometimes not.
 - Typescript typings
 - Use SSE in your Angular project
+- Allow for changing url parameters between connections
 
 Forked from: https://github.com/Yaffle/EventSource
 with changes incorporated from: https://github.com/AlexGalays/EventSource and https://github.com/sguiheux/EventSource.
@@ -22,7 +23,7 @@ How to use with angular:
 
 TypeScript
 ```typescript
-import {EventSourcePolyfill} from 'ng-event-source';
+import {EventSourcePolyfill} from 'siilo-event-source';
 
 let eventSource = new EventSourcePolyfill('http://my/url', {headers: { headerName: 'HeaderValue', header2: 'HeaderValue2' }});
 eventSource.onmessage = (data => {
