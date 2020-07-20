@@ -1,6 +1,6 @@
 {
-  "name": "siilo-event-source",
-  "version": "2.0.0",
+  "name": "@siilobv/siilo-event-source",
+  "version": "2.1.0",
   "description": "A polyfill for http://www.w3.org/TR/eventsource/ ",
   "main": "src/eventsource.js",
   "typings": "src/typings.d.ts",
@@ -8,6 +8,13 @@
     "type": "git",
     "url": "git://github.com/siilobv/EventSource.git"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "files": [
+    "src/eventsource.js",
+    "src/typings.d.ts"
+  ],
   "keywords": [
     "sse",
     "server sent events",
